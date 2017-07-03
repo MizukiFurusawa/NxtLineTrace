@@ -13,7 +13,16 @@ import lejos.util.Delay;
 public class SimpleDriver extends AbstDriver {
 
 	//最高速度に対する割合
-	double speedGain = 1.20;
+	private static final double SPEED_GAIN = 1.20;
+	private static double speedGain = SPEED_GAIN;
+
+	public static void setGain(double gain){
+		speedGain = gain;
+	}
+
+	public static void resetGain(){
+		speedGain = SPEED_GAIN;
+	}
 
 	int delay = 4;
 

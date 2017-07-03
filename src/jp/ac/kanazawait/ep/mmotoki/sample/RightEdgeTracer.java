@@ -46,7 +46,7 @@ public class RightEdgeTracer extends AbstNavigator {
 
 			//青色→急な右旋回
 			if(colorID == 1 || colorID == 2){
-				driver.turnRightQuick();
+				driver.turnRight();
 				break;
 			}
 			//黒色→曲がりきれていないので更に右旋回する
