@@ -5,6 +5,7 @@ import jp.ac.kanazawait.ep.mmotoki.abst.AbstDriver;
 import jp.ac.kanazawait.ep.mmotoki.abst.AbstNavigator;
 import jp.ac.kanazawait.ep.mmotoki.addon.Logger;
 import lejos.nxt.Button;
+import lejos.nxt.LCD;
 import lejos.nxt.Sound;
 
 /**
@@ -61,11 +62,12 @@ public class SampleCar extends AbstCar {
 	}
 	private void show() {
 
-		/*
+
 		LCD.clear();
 		if(direction)LCD.drawString("turn = left", 0, 0);
 		else LCD.drawString("turn = right", 0, 0);
 
+		/*
 		Color color = checker.getColor();
 		LCD.clear();
 
