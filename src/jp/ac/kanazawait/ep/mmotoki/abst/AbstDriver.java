@@ -29,6 +29,23 @@ public abstract class AbstDriver {
 	 */
 	public abstract void turnRightQuick();
 
+
+
+	// 20170703追加
+	/**
+	 * 左にさらにきつくステアリングを切る
+	 */
+	public abstract void turnLeftQuick2();
+
+	// 20170703追加
+	/**
+	 * 右にさらにきつくステアリングを切る
+	 */
+	public abstract void turnRightQuick2();
+
+
+
+
 	// 20160920追加
 	/**
 	 * 左にゆるくステアリングを切る

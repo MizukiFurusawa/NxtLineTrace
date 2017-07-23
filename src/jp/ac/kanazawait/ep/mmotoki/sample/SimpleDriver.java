@@ -4,6 +4,7 @@ package jp.ac.kanazawait.ep.mmotoki.sample;
 import jp.ac.kanazawait.ep.mmotoki.abst.AbstDriver;
 import lejos.util.Delay;
 
+
 /**
  * 単純な走行
  * @author mmotoki
@@ -11,81 +12,123 @@ import lejos.util.Delay;
  */
 public class SimpleDriver extends AbstDriver {
 
-	@Override
-	public void turnLeft() {
-		setSpeed(170, 500);
-		forward();
+	//最高速度に対する割合
+	private static final double SPEED_GAIN = 1.00;
+	private static double speedGain = SPEED_GAIN;
+
+	public static void setGain(double gain){
+		speedGain = gain;
 	}
 
+	public static void resetGain(){
+		speedGain = SPEED_GAIN;
+	}
+
+	int delay = 5;
+
+	//通常トレース速度
+	int starightSpeed = 560;
+
+	//右旋回の左右それぞれのスピード
+	int turnRightLSpeed = 560;
+	int turnRightRSpeed = 140;
+
+	//左ライントレース時に、
+	//青色モード切替した時の
+	//左右それぞれのスピード
+	int modeChangeRSpeed = 560;
+	int modeChangeLSpeed = 50;
+
+	//左ライントレース時に、
+	//青色モード切替した時、黒色を検出した時の、
+	//左右それぞれのスピード
+	int modeChangeRSpeed2 = 560;
+	int modeChangeLSpeed2 = 30;
+
+	private int getSpeed(int sp){
+		return (int)(speedGain * sp);
+	}
+
+	//通常の右旋回
 	@Override
 	public void turnRight() {
-		setSpeed(500, 170);
+		setSpeed(getSpeed(turnRightLSpeed), getSpeed(turnRightRSpeed));
 		forward();
+		Delay.msDelay(delay);
 	}
 
+	//通常の左旋回
+	@Override
+	public void turnLeft() {
+		setSpeed(getSpeed(turnRightRSpeed), getSpeed(turnRightLSpeed));
+		forward();
+		Delay.msDelay(delay);
+	}
+
+	//直進
 	// 20160509追加
 	@Override
 	public void goStraight() {
-		setSpeed(450, 450);
+		setSpeed(getSpeed(starightSpeed), getSpeed(starightSpeed));
 		forward();
+		Delay.msDelay(delay);
 	}
 
+	//青色検出時のモード切替前処理
 	@Override
 	public void turnLeftQuick() {
-		setSpeed(20, 350);
+		setSpeed(getSpeed(modeChangeLSpeed), getSpeed(modeChangeRSpeed));
 		forward();
-		Delay.msDelay(10);
-		//stop();
+		Delay.msDelay(delay/2);
 	}
 
+	//青色検出時のモード切替前処理
 	@Override
 	public void turnRightQuick() {
-		setSpeed(350, 20);
+		setSpeed(getSpeed(modeChangeRSpeed), getSpeed(modeChangeLSpeed));
 		forward();
-		Delay.msDelay(10);
-		//stop();
+		Delay.msDelay(delay/2);
 	}
 
+	//青色検出時、黒色検出した時のモード切替前処理
+	@Override
+	public void turnLeftQuick2() {
+		setSpeed(getSpeed(modeChangeLSpeed2), getSpeed(modeChangeRSpeed2));
+		forward();
+		Delay.msDelay(delay/2);
+	}
 
+	//青色検出時、黒色検出した時のモード切替前処理
+	@Override
+	public void turnRightQuick2() {
+		setSpeed(getSpeed(modeChangeRSpeed2), getSpeed(modeChangeLSpeed2));
+		forward();
+		Delay.msDelay(delay/2);
+	}
+
+	//以下未使用メソッド群
 	@Override
 	public void turnLeftSlack() {
-		setSpeed(100, 450);
-		forward();
-		Delay.msDelay(300);
-		setSpeed(450, 80);
-		forward();
-		Delay.msDelay(380);
-		//stop();
+		stop();
 	}
-
 
 	@Override
 	public void turnRightSlack() {
-		setSpeed(450, 100);
-		forward();
-		Delay.msDelay(300);
-		setSpeed(80, 450);
-		forward();
-		Delay.msDelay(380);
-		//stop();
+		stop();
 	}
 
 	@Override
 	public void goStraightFast() {
-		//stop();
+		stop();
 	}
 
 	@Override
 	public void goStraightSlow() {
-		//stop();
+		stop();
 	}
 
 	@Override
 	public void start() {
-		setSpeed(500);
-		forward();
-		Delay.msDelay(400);
-		//stop();
+		stop();
 	}
-
 }

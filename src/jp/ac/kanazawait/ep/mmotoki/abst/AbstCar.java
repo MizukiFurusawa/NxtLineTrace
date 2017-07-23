@@ -39,10 +39,16 @@ public abstract class AbstCar {
 		startTime = System.currentTimeMillis();
 	}
 
+	public long getStartTimeMillis(){
+		return startTime;
+	}
+
 	/**
 	 * モーターを停止し，終了時刻を取得し，走行時間を表示する
 	 * @param driver
 	 */
+
+
 	public void stop(AbstDriver driver) {
 		driver.stop();
 		endTime = System.currentTimeMillis();
