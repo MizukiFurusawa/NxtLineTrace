@@ -49,11 +49,6 @@ public class RightEdgeTracer extends AbstNavigator {
 				driver.turnRight();
 				break;
 			}
-			//黒色→曲がりきれていないので更に右旋回する
-			else if(colorID == 7) {
-				driver.turnRightQuick2();
-				break;
-			}
 			//白色→曲がりきれている
 			if(colorID == 6 || colorID == 8) {
 				modeChangePattern = 2;

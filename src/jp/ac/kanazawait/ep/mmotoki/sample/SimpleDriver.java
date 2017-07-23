@@ -13,7 +13,7 @@ import lejos.util.Delay;
 public class SimpleDriver extends AbstDriver {
 
 	//最高速度に対する割合
-	private static final double SPEED_GAIN = 1.20;
+	private static final double SPEED_GAIN = 1.00;
 	private static double speedGain = SPEED_GAIN;
 
 	public static void setGain(double gain){
@@ -24,25 +24,25 @@ public class SimpleDriver extends AbstDriver {
 		speedGain = SPEED_GAIN;
 	}
 
-	int delay = 4;
+	int delay = 5;
 
 	//通常トレース速度
-	int starightSpeed = 480;
+	int starightSpeed = 560;
 
 	//右旋回の左右それぞれのスピード
-	int turnRightLSpeed = 480;
-	int turnRightRSpeed = 120;
+	int turnRightLSpeed = 560;
+	int turnRightRSpeed = 140;
 
 	//左ライントレース時に、
-	//青色モード切替した時の、
+	//青色モード切替した時の
 	//左右それぞれのスピード
-	int modeChangeRSpeed = 480;
-	int modeChangeLSpeed = 60;
+	int modeChangeRSpeed = 560;
+	int modeChangeLSpeed = 50;
 
 	//左ライントレース時に、
 	//青色モード切替した時、黒色を検出した時の、
 	//左右それぞれのスピード
-	int modeChangeRSpeed2 = 480;
+	int modeChangeRSpeed2 = 560;
 	int modeChangeLSpeed2 = 30;
 
 	private int getSpeed(int sp){
@@ -79,7 +79,7 @@ public class SimpleDriver extends AbstDriver {
 	public void turnLeftQuick() {
 		setSpeed(getSpeed(modeChangeLSpeed), getSpeed(modeChangeRSpeed));
 		forward();
-		Delay.msDelay(delay);
+		Delay.msDelay(delay/2);
 	}
 
 	//青色検出時のモード切替前処理
@@ -87,7 +87,7 @@ public class SimpleDriver extends AbstDriver {
 	public void turnRightQuick() {
 		setSpeed(getSpeed(modeChangeRSpeed), getSpeed(modeChangeLSpeed));
 		forward();
-		Delay.msDelay(delay);
+		Delay.msDelay(delay/2);
 	}
 
 	//青色検出時、黒色検出した時のモード切替前処理
@@ -95,7 +95,7 @@ public class SimpleDriver extends AbstDriver {
 	public void turnLeftQuick2() {
 		setSpeed(getSpeed(modeChangeLSpeed2), getSpeed(modeChangeRSpeed2));
 		forward();
-		Delay.msDelay(delay);
+		Delay.msDelay(delay/2);
 	}
 
 	//青色検出時、黒色検出した時のモード切替前処理
@@ -103,7 +103,7 @@ public class SimpleDriver extends AbstDriver {
 	public void turnRightQuick2() {
 		setSpeed(getSpeed(modeChangeRSpeed2), getSpeed(modeChangeLSpeed2));
 		forward();
-		Delay.msDelay(delay);
+		Delay.msDelay(delay/2);
 	}
 
 	//以下未使用メソッド群
