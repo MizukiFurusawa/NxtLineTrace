@@ -7,6 +7,9 @@ public abstract class AbstDriver {
 	protected static NXTRegulatedMotor rightWheel = Motor.A;
 	protected static NXTRegulatedMotor leftWheel = Motor.C;
 
+
+	public abstract void startDash();
+
 	/**
 	 * 左にステアリングを切る
 	 */

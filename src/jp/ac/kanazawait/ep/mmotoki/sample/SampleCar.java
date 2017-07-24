@@ -20,6 +20,7 @@ public class SampleCar extends AbstCar {
 	private AbstNavigator navR = new RightEdgeTracer();
 	private AbstDriver driver = new SimpleDriver();
 	private boolean direction = true;
+	private boolean isStartDash = true;
 
 
 	@Override
@@ -34,6 +35,10 @@ public class SampleCar extends AbstCar {
 		while(Button.ENTER.isDown());
 		logger.start();
 		while (checker.getColorID()!=0 && !Button.ESCAPE.isDown()) {
+			if(isStartDash){
+				driver.startDash();
+				isStartDash = false;
+			}
 			show();
 			if(direction)changeDirection(navL.decision(checker, driver));
 			if(!direction)changeDirection(navR.decision(checker, driver));
@@ -82,7 +87,7 @@ public class SampleCar extends AbstCar {
 		LCD.drawInt(color.getBlue(), 8, 4);
 
 		//laptimeのリアルタイム表示
-		LCD.drawString("LapTime=" + (System.currentTimeMillis() - getStartTimeMillis()) + "ms", 0, 6);
+		LCD.drawString("LapTime=" + (System.currentTimeMillis() - getStartTimeMillis())*0.80 + "ms", 0, 6);
 
 	}
 

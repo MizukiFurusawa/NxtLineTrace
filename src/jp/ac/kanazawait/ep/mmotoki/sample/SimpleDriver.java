@@ -24,29 +24,40 @@ public class SimpleDriver extends AbstDriver {
 		speedGain = SPEED_GAIN;
 	}
 
-	int delay = 5;
+	int delay = 3;
 
 	//通常トレース速度
-	int starightSpeed = 560;
+	int starightSpeed = 520;
 
 	//右旋回の左右それぞれのスピード
-	int turnRightLSpeed = 560;
-	int turnRightRSpeed = 140;
+	int turnRightLSpeed = 530;
+	int turnRightRSpeed = 170;
 
 	//左ライントレース時に、
 	//青色モード切替した時の
 	//左右それぞれのスピード
-	int modeChangeRSpeed = 560;
-	int modeChangeLSpeed = 50;
+	int modeChangeRSpeed = 530;
+	int modeChangeLSpeed = 170;
 
 	//左ライントレース時に、
 	//青色モード切替した時、黒色を検出した時の、
 	//左右それぞれのスピード
-	int modeChangeRSpeed2 = 560;
-	int modeChangeLSpeed2 = 30;
+	int modeChangeRSpeed2 = 530;
+	int modeChangeLSpeed2 = 80;
+
+	//スタートダッシュのパラーメータ
+	int speedDash = 800;
+	int speedDashTime = 670; //ms
 
 	private int getSpeed(int sp){
 		return (int)(speedGain * sp);
+	}
+
+	@Override
+	public void startDash(){
+		setSpeed(speedDash,speedDash);
+		forward();
+		Delay.msDelay(speedDashTime);
 	}
 
 	//通常の右旋回
