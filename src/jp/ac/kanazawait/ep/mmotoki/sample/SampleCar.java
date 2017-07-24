@@ -87,7 +87,15 @@ public class SampleCar extends AbstCar {
 		LCD.drawInt(color.getBlue(), 8, 4);
 
 		//laptimeのリアルタイム表示
-		LCD.drawString("LapTime=" + (System.currentTimeMillis() - getStartTimeMillis())*0.80 + "ms", 0, 6);
+		double time = (System.currentTimeMillis() - getStartTimeMillis())*0.80;
+		LCD.drawString("LapTime=" + time + "ms", 0, 6);
+
+		double dashtime = 10500 - 400;
+		if( dashtime <= time && time < dashtime + 2000 && !isStartDash && checker.getColorID() == 6){
+			SimpleDriver.setGain(1.2f);
+		}else{
+			SimpleDriver.resetGain();
+		}
 
 	}
 

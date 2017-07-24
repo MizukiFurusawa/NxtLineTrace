@@ -24,20 +24,20 @@ public class SimpleDriver extends AbstDriver {
 		speedGain = SPEED_GAIN;
 	}
 
-	int delay = 3;
+	int delay = 2;
 
 	//通常トレース速度
 	int starightSpeed = 520;
 
 	//右旋回の左右それぞれのスピード
 	int turnRightLSpeed = 530;
-	int turnRightRSpeed = 170;
+	int turnRightRSpeed = 180;
 
 	//左ライントレース時に、
 	//青色モード切替した時の
 	//左右それぞれのスピード
 	int modeChangeRSpeed = 530;
-	int modeChangeLSpeed = 170;
+	int modeChangeLSpeed = 180;
 
 	//左ライントレース時に、
 	//青色モード切替した時、黒色を検出した時の、
@@ -46,8 +46,8 @@ public class SimpleDriver extends AbstDriver {
 	int modeChangeLSpeed2 = 80;
 
 	//スタートダッシュのパラーメータ
-	int speedDash = 800;
-	int speedDashTime = 670; //ms
+	int speedDash = 850;
+	int speedDashTime = 700; //ms
 
 	private int getSpeed(int sp){
 		return (int)(speedGain * sp);
