@@ -90,9 +90,9 @@ public class SampleCar extends AbstCar {
 		double time = (System.currentTimeMillis() - getStartTimeMillis())*0.80;
 		LCD.drawString("LapTime=" + time + "ms", 0, 6);
 
-		double dashtime = 10500 - 400;
-		if( dashtime <= time && time < dashtime + 2000 && !isStartDash && checker.getColorID() == 6){
-			SimpleDriver.setGain(1.2f);
+		double dashtime = 10500 - 350;
+		if( dashtime <= time && time < dashtime + 2500 && !isStartDash && checker.getColorID() == 6){
+			SimpleDriver.setGain(1.25f);
 		}else{
 			SimpleDriver.resetGain();
 		}

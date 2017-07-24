@@ -24,7 +24,7 @@ public class SimpleDriver extends AbstDriver {
 		speedGain = SPEED_GAIN;
 	}
 
-	int delay = 2;
+	int delay = 3;
 
 	//通常トレース速度
 	int starightSpeed = 520;
@@ -47,7 +47,7 @@ public class SimpleDriver extends AbstDriver {
 
 	//スタートダッシュのパラーメータ
 	int speedDash = 850;
-	int speedDashTime = 700; //ms
+	int speedDashTime = 800; //ms
 
 	private int getSpeed(int sp){
 		return (int)(speedGain * sp);
